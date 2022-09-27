@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div {
+            color: white;
+            height: 70vh;
+            display: flex;
+            justify-content: center;   
+            align-items: center;    
+            font-size: 3rem;    
+            text-transform: uppercase; 
+            text-align: center;
+            border: 3px solid green;
+
+        }
+
+        .image1 {
+            background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),  url('/Javascript_tutorial/DOM/images/car1.jpg');
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .image2 {
+            background: url('/Javascript_tutorial/DOM/images/animal1.jfif');
+
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .image3 {
+            background: linear-gradient(to left,rgba(0,0,0,0.2),rgba(220,20,10,0.3)),url('/Javascript_tutorial/DOM/images/city1.jpg') center/cover no-repeat fixed;
+/*             
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center; */
+        }
+
+        .text {
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6))
+        }
+    </style>
+</head>
+<body>
+    <div class="image1"><h2 class="text">Image 1</h2></div>
+    <div class="image2"><h2 class="text">Image 2</h2></div>
+    <div class="image3">Image 3</div>
+</body>
+</html>

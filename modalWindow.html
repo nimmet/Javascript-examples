@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background:rgb(135, 239, 135);
+          
+        }
+
+        header {
+            
+            text-align: center;
+            margin: 0 auto;
+            
+            
+        }
+
+       
+
+        button {
+            width: 130px;
+            height: 40px;
+            text-align: center;
+            font-size: 1.3rem;
+            border: 2px sold yellowgreen;
+            border-radius: 5px;
+            margin: 20px auto;
+        }
+
+        .close {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top:120px;
+            left:445px;
+        }
+        .modal {
+            width: 350px;
+            height: 200px;
+            background: rgb(230, 218, 218);
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: center;
+            margin: 50px auto;
+            padding: 20px 10px;
+            display: none;
+            
+        }
+    </style>
+</head>
+<body>
+    <header class="btns">
+        <button class="window1">Window 1</button>
+        <button class="window2">Window 2</button>
+        <button class="window3">Window 3</button>
+    </header>
+
+    <main class="modal">
+        <p class="txt">
+            <strong><span class="window"></span></strong>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore soluta eveniet distinctio, quo modi nam? Error, architecto modi excepturi, eum sed obcaecati aperiam maiores rerum ducimus nobis nisi soluta hic.
+        </p>
+        <button class="close">X</button>
+    </main>
+
+    <script>
+
+        const modal = document.querySelector('.modal')
+
+        const btns = document.querySelectorAll('.btns')
+
+        const close = document.querySelector('.close')
+
+        const win = document.querySelector('.window')
+        
+        btns.forEach(item=>{
+            item.addEventListener('click',function(e){
+               
+                modal.style.display='block'
+                win.textContent = e.target.textContent
+                
+               
+            })
+        })
+
+        close.addEventListener('click',()=>{
+            modal.style.display='none'
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .container{
+            border: 2px solid black;
+            width: 95vw;
+            margin: 0 auto;
+            margin-top: 30px;
+            position: relative;
+        
+        }
+
+        .sale {
+
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            background: rgba(210,50,60);
+            color:white;
+            display: inline-block;
+            padding: 3px 7px;
+            position: absolute;
+            top:-12px;
+            left:-25px;
+            cursor: pointer;
+            letter-spacing: 2px;
+}
+        
+
+        .heading {
+            background: rgba(230,230,230,0.9);
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+
+        .shipping {
+            color: gray;
+            text-transform: uppercase;
+            display: inline;
+        }
+
+        .price {
+            display: inline;
+            font-size: 18px;
+            margin-right: 5px;
+        }
+        a{
+            color: black;
+        }
+
+        .product {
+            text-transform: uppercase;
+            font-size: bold;
+            color: black;
+        }
+
+        .card {
+            background: #000;
+            color: white;
+            text-transform: uppercase;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            cursor: pointer;
+            padding: 15px;
+            
+
+        }
+
+        .card:hover{
+            background: white;
+            color:#000;
+            border:none;
+            margin: 2px;
+            border-top: 2px solid black;
+        }
+
+        a:hover{
+            text-decoration: none;
+        }
+
+        li:nth-child(odd){
+            color:blue;
+        }
+
+      
+        
+        .colors li {
+            list-style: none;
+            display: inline-block;
+            margin-left: 10px;
+            
+            
+        }
+
+        .black {
+            background: #000;
+            width: 15px;
+            height: 15px;
+            
+        }
+        .blue {
+            background: blue;
+            width: 15px;
+            height: 15px;
+        }
+        .red {
+            background: red;
+            width: 15px;
+            height: 15px;
+        }
+        .yellow {
+            background: yellow;
+            width: 15px;
+            height: 15px;
+        }
+        .green {
+            background: greenyellow;
+            width: 15px;
+            height: 15px;
+        }
+        .brown {
+            background: brown;
+            width: 15px;
+            height: 15px;
+        }
+
+        .imagepart{
+            float:left;
+            display: block;
+        }
+
+        .article1 {
+            width: 30vw;
+            display: inline-block;
+            margin-left: 30px;
+        }
+
+        .detail {
+            width: 30vw;
+            display: inline-block;
+            margin-right: 30px;
+        }
+
+       
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sale">sale</div>
+        <div class="heading">
+            converse chuck tylor all star low top 😁
+        </div>
+        <div class="imagepart">
+            <img src="DOM/images/animal2.jfif" alt="">
+        </div>
+        <div class="article1">
+            <div class="free">
+                <h2 class="price">65.00$</h2>
+                <div class="shipping">Free shipping</div>
+            </div>
+            
+            <p>Ready to dress up or down, these classic canvas Chucks are en everyday wardrobe staple.</p>
+    
+            <a href="#">More informatioon -></a>
+            <div class="colors">
+                <ul id="colors">
+                    <li class="black"></li>
+                    <li class="blue"></li>
+                    <li class="red"></li>
+                    <li class="yellow"></li>
+                    <li class="green"></li>
+                    <li class="brown"></li>
+                </ul>
+            </div>
+        </div>
+      
+        <div class="detail">
+            <div class="product">product details</div>
+            <ul class="products">
+                <li>Lightweight, durable canvas</li>
+                <li>Lightly padded footbed for added confort</li>
+                <li>Iconic chuck taylor ankle path</li>
+            </ul>
+        </div>
+        <button class="card" onclick="alert('add to card')">add to cart</button>
+    </div>
+
+    <script>
+
+        const colors = document.querySelectorAll('#colors')
+        const sale = document.querySelector('.sale')
+        colors.forEach(item=>{
+            item.addEventListener('click',function(e){
+               if (e.target.className==='black'){
+                sale.style.background='black'
+                
+               }
+               else if (e.target.className==='blue'){
+                sale.style.background='blue'
+               }
+               else if (e.target.className==='red'){
+                sale.style.background='red'
+               } else if (e.target.className==='yellow'){
+                sale.style.background='gold'
+               }else if (e.target.className==='green'){
+                sale.style.background='green'
+               }else {
+                sale.style.background='brown'
+               }
+            })
+        })
+    </script>
+</body>
+</html>

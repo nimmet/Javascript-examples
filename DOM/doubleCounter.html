@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: inline-block;
+            position: relative;
+            background:rgb(219, 180, 109);
+            margin: 20px 5px;
+            width: 500px;
+            height: 600px;
+            left: 30px;
+        }
+
+
+        .div-counter1{
+            background: rgb(246, 242, 242);
+            margin: 20px 50px;
+            width: 400px;
+            height: 250px;
+            text-align: center;
+            border-radius: 25%;
+            box-shadow: inset 2px -4px 20px yellow;
+
+        }
+
+        .div-counter2{
+            /* background: rgb(237, 231, 231); */
+            margin:20px 50px;
+            width: 400px;
+            height: 250px;
+            text-align: center;
+            border-radius: 25%;
+            box-shadow: inset 2px -4px 20px yellow;
+            background: linear-gradient(to top right, rgb(233, 245, 231),rgb(73, 116, 45));
+        }
+
+        .counterTXT {
+            font-size: 1.5rem;
+            padding: 50px 20px;
+            font-weight: bold;
+        }
+
+        button{
+            border: solid 1px;
+            border-radius: 15%;
+            font-size: 1.2rem;
+            background: rgb(198, 230, 174);
+            padding: 5px;
+            box-shadow: inset 1px -4px 0 olive;
+        }
+
+        button:active{
+            box-shadow: inset 0.5px -2px 20px olive;
+        }
+    </style>
+</head>
+<body> 
+    
+    <div class="container">
+        <div class="div-counter1">
+            <div class="counterTXT"><span class="show1">200</span></div>
+            <div class="btns1" id="btn1">
+                <button class="increase1" id="increase1">Increase</button>
+                <button class="reset1">Reset</button>
+                <button class="decrease1">Decrease</button>
+            </div>
+        </div>
+        <div class="div-counter2">
+            <div class="counterTXT"><span class="show2">200</span></div>
+            <div class="btns2" id='btn2'>
+                <button class="increase2">Increase</button>
+                <button class="reset2">Reset</button>
+                <button class="decrease2">Decrease</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="DoubleCounter.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hs {
+            color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello People</h1>
+    <button onclick='alert("hello People")' id="me">Click me</button>
+    <div class="heads"><h2>More buttons will come here.</h2></div>
+    <div class="heads"><h2>More buttons will come here.</h2></div>
+    <div class="heads"><h2>More buttons will come here.</h2></div>
+    <div class="heads"><h2>More buttons will come here.</h2></div>
+    <div class="heads"><h2>More buttons will come here.</h2></div>
+    <button class="btn">Random 1</button>
+    <button class="btn">Random 2</button>
+    <button class="btn">Random 3</button>
+    <button class="btn">Random 4</button>
+    <button class="btn">Random 5</button>
+    <div id="car">Something should be here</div>
+    <script>
+        // var btn = document.getElementsByClassName('buttons')
+        
+        // for(var i=0; i<5; i++){
+        //     // btn.innerHtml= <button onclick='alert("hello People")'>Click me</button>;
+            
+        // }
+
+        document.querySelectorAll('.heads').forEach((item)=>{
+            item.addEventListener('click',()=>{
+                item.classList.add('hs')
+            })
+        })
+
+        document.querySelectorAll('.btn').forEach((item)=>{
+            item.addEventListener('click',()=>{
+                if(item.textContent.endsWith('1')){
+                    // alert('It is 1')
+                    alert(item.textContent.charAt(7))
+                
+                } else{
+                    alert('It is something else.')
+                }
+        })
+    })
+
+        var me = document.getElementById('me')
+me.addEventListener('click',()=>{
+    document.querySelectorAll('.heads').forEach((item)=>{
+            item.addEventListener('click',()=>{
+                item.classList.remove('hs')
+            })
+        })
+})
+
+const car = {
+    make:'Honda',
+    model:'E-tron',
+    year:2022,
+    colors:['green','yellow','cyan'],
+    hybrid:true,
+    drive(){
+        return car.model+' driving...'
+    },
+    stop(){
+        return car.model+' stopped.'
+    }
+}
+
+var cardiv = document.getElementById('car')
+cardiv.innerHTML = '<ul><li>Make: '+car.make+'</li>'+
+    '<li>Color: '+car.colors[0]+'</li>'+
+    '<li>'+car.drive()+'</li>'+
+    '<li>'+car.stop()+'</li></ul>'
+
+    
+    </script>
+</body>
+</html>

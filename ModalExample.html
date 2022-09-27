@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width: 150px;
+            height: 180px;
+            border: 3px solid yellowgreen;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .slide1 {
+            width: 100px;
+            height: 100px;
+            border: 3px solid yellow;
+            margin: 10px;
+            border-radius: 10px;
+            margin-right: 80px;
+            display: none;
+            
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 3rem;
+            border-width: 0;
+            background: none;
+            color:palevioletred;
+        }
+
+        .slide {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        
+
+        .left {
+            position: absolute;
+            top:35%;
+            left:-25%;
+            cursor: pointer;
+            text-align: center;
+
+
+        }
+
+        .right {
+            position: absolute;
+            top:35%;
+            right: -25%;
+            cursor: pointer;
+            text-align: center;
+
+        }
+
+        .img-list {
+            text-align: center;
+        }
+
+        .img-list img {
+            width: 80px;
+            height: 100px;
+            border: 3px solid aqua;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        #effect {
+            width: 95px;
+            height: 115px;
+            border: 2px solid rgb(225, 205, 25);
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .modal {
+            display: block;
+            text-align: center;
+            position: relative;
+        }
+
+        .images {
+            
+        }
+    </style>
+</head>
+<body>
+    <header class="images">
+        <img src="./DOM/images/animal1.jfif" alt="" class="animal">
+        <img src="./DOM/images/car1.jpg" alt="" class="car">
+        <img src="./DOM/images/city1.jpg" alt="" class="city">
+        <img src="./DOM/images/nature1.jpg" alt="" class="nature">
+    </header>
+    <main class="modal">
+        <section class="slide">
+            <img src="./DOM/images/animal1.jfif" alt="" class="slide1">
+            <button class="left"><</button>
+            <img src="./DOM/images/animal1.jfif" alt="" class="middle">
+            <button class="right">></button>
+        </section>
+        <section class="img-list">
+            <img src="./DOM/images/animal1.jfif" class="animal0">
+            <img src="./DOM/images/animal2.jfif" class="animal1">
+            <img src="./DOM/images/animal3.jpg" class="animal2">
+            <img src="./DOM/images/animal4.jpg" class="animal3">
+        </section>
+    </main>
+
+    <script>
+
+
+        const images = document.querySelectorAll('.images')
+
+
+        const modal = document.querySelector('.modal')
+        const animalArr = [
+        "./DOM/images/animal1.jfif",
+        "./DOM/images/animal2.jfif",
+        "./DOM/images/animal3.jpg",
+        "./DOM/images/animal4.jpg"
+        ]
+
+        const carArr = [
+        "./DOM/images/car1.jpg",
+        "./DOM/images/car2.jpg",
+        "./DOM/images/car3.jpg",
+        "./DOM/images/car4.jfif"
+        
+        ]
+
+        const cityArr = [
+        "./DOM/images/city1.jpg",
+        "./DOM/images/city2.jpg",
+        "./DOM/images/city3.jpg",
+        "./DOM/images/city4.jpg"
+        ]
+
+        const natureArr = [
+        "./DOM/images/nature1.jpg",
+        "./DOM/images/nature2.jfif",
+        "./DOM/images/nature3.jpg",
+        "./DOM/images/nature4.jfif",
+        ]
+
+        const animalName = [
+            'animal0',
+            'animal1',
+            'animal2',
+            'animal3',
+        ]
+        window.addEventListener('load',()=>{
+            modal.style.display='none'
+        })
+
+        const middle = document.querySelector('.middle')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+
+        let count=0
+
+        // function starts from here
+        function showModal(nameArr,imgArr){
+            document.querySelector(`.${nameArr[0]}`).id='effect'
+             left.addEventListener('click',()=>{
+            document.querySelector(`.${nameArr[count]}`).id=''
+            if(count===0){
+                count = imgArr.length
+                  
+                  count--
+                  
+            } else if(count===imgArr.length){
+                count=imgArr.length
+                
+                count--
+                
+                middle.src=imgArr[count]
+             }else{
+                count--
+                
+             }
+             middle.src=imgArr[count]
+             document.querySelector(`.${nameArr[count]}`).id='effect'
+             
+        })
+
+        right.addEventListener('click',()=>{
+            document.querySelector(`.${nameArr[count]}`).id=''
+            if(count===0){
+                count++
+             }else if(count === imgArr.length-1){
+                middle.src=imgArr[imgArr.length-1]
+                count = 0
+
+             }else{
+                count++
+             }
+             middle.src=imgArr[count]
+             document.querySelector(`.${nameArr[count]}`).id='effect'
+             console.log(right.className)
+        }) // Images navigation code end here 
+
+        }
+        // function ends here
+
+        function initImage(nameArr, imgArr){
+            middle.src = imgArr[0]
+             for(let i=0; i<imgArr.length; i++){
+                document.querySelector(`.${nameArr[i]}`).src=imgArr[i]
+             }
+        }
+
+
+
+        images.forEach(image=>{
+            image.addEventListener('click',(e)=>{
+                image.style.display='none'
+                modal.style.display='block'
+                
+               if (e.target.className === 'animal') {
+                
+                // Images navigation code begin from here 
+                initImage(animalName,animalArr)
+                showModal(animalName,animalArr)
+
+               } else if(e.target.className==='car'){
+               initImage(animalName,carArr)
+                showModal(animalName,carArr)
+               } else if(e.target.className==='city'){
+               initImage(animalName,cityArr)
+                showModal(animalName,cityArr)
+               } else{
+                
+               initImage(animalName,natureArr)
+                showModal(animalName,natureArr)
+               
+               }
+
+            })
+        })
+
+    </script>
+</body>
+</html>

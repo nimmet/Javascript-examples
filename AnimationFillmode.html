@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 100px;
+            color: white;
+            margin: 10px;
+            opacity: 0;
+        }
+
+        .animation {
+            background: blue;
+
+            animation: move 4s 3;
+            animation-fill-mode: forwards;
+        }
+        @keyframes move {
+
+            0%{
+                /* transform: translateX(20px); */
+                opacity: 0.1;
+            }
+
+            25%{
+                /* background: yellow; */
+                transform: translateX(200px);
+                opacity: 0.25;
+
+            }
+
+            25%{
+                /* background: yellow; */
+                transform: translateX(-100px);
+                opacity: 0.5;
+
+            }
+
+            75% {
+                /* background: green; */
+                /* transform: translateX(-100px); */
+                opacity: 0.75;
+            
+            }
+
+            100%{
+                /* background: coral; */
+                transform: translateX(20px);
+                /* transform: scale(1.2); */
+                opacity: 1;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="animation">animation</div>
+</body>
+</html>

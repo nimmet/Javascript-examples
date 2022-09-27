@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body{
+        display: grid;
+        align-content: center;
+        justify-content: center;
+     }
+
+     .btn {
+        align-items: center;
+        justify-items: center;
+        width: 90px;
+        margin: 10px auto;
+        
+     }
+    </style>
+</head>
+<body>
+
+    <h2>Variable Names: </h2>
+    <textarea name="" id="var1" cols="50" rows="10"></textarea>
+    <button class="btn">Convert</button>
+    <h2>Converted Variables:</h2>
+    <textarea name="" id="var2" cols="50" rows="10"></textarea>
+    <script>
+      
+      const var1 = document.getElementById('var1')
+      const btn = document.querySelector('.btn')
+      const var2 = document.getElementById('var2')
+
+      btn.addEventListener('click',()=>{
+      
+        const txt = var1.value.toLowerCase().split('\n')
+        let str=''
+        let i=0
+        let c=0
+        for(let t of txt){
+            str=t.trim()
+            i = str.indexOf('_')
+            str=str.replace('_','')
+             str=str.slice(0,i)+str[i].toUpperCase()+str.slice(i+1)
+
+            var2.innerHTML += `${str.padEnd(30)+'✔'.repeat(c+1)+'\n'}`
+            c++
+        }
+     
+      })
+
+    </script>
+</body>
+</html>

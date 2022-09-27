@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">Answer</button>
+
+    <script>
+const poll = { 
+    question: "What is your favourite programming language?", 
+    options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+     // This generates [0, 0, 0, 0]. More in the next section!
+    answers: new Array(4).fill(0),
+     registerNewAnswer(){
+        const answer = Number(prompt(
+           `${this.question}\n${this.options.join('\n')}`
+        ))
+
+        if(answer<4&&answer>-1){
+            this.answers[answer]=this.answers[answer]+1
+        }else{
+           answer= Number(prompt("You have to enter a number between 0 to 3"))
+           this.answers[answer]=this.answers[answer]+1
+        }
+
+        // console.log(this);
+        this.displayResult('string')
+        this.displayResult('array')
+     },
+     displayResult(type){
+        if(type==='string'){
+            console.log(`Poll results are ${this.answers}`)
+        }else{
+            console.log(`${this.answers}`);
+        }
+     }
+ };
+
+const btn = document.querySelector('.btn')
+btn.addEventListener('click',poll.registerNewAnswer.bind(poll))
+
+
+// const show = poll.displayResult.bind()
+// show('string')
+
+const data1 = [5,2,4,1,15,8,3]
+const data2 = [16,6,10,5,6,1,4]
+
+function dogAge(data)
+{ 
+    return data.map(age=>{
+    if(age<=2){
+        return 2*age
+    }else{
+        return (16+age*4)
+    }
+})
+}
+
+const toplam = data1.reduce((acc,cur,i)=>{
+    if(cur<=2){
+        return acc += 2*cur
+    }else{
+        return acc+=(16+cur*4)
+    }
+},0)
+
+function under18(data){
+    return data.filter(age=> age>=18)
+}
+
+function avgAge(data){
+    return data.reduce((acc,cur)=> acc += cur,0)/data.length
+}
+
+console.log(toplam);
+console.log(data1);
+console.log(dogAge(data1));
+console.log(under18(dogAge(data1)));
+console.log(avgAge(under18(dogAge(data1))));
+console.log('+'.repeat(40));
+console.log(data2);
+console.log(dogAge(data2));
+console.log(under18(dogAge(data2)));
+console.log(avgAge(under18(dogAge(data2))));
+
+    </script>
+</body>
+</html>

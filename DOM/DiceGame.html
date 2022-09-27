@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background-image: linear-gradient(90deg, #BC00FFED 1%, #71C4FFFF 88%);
+        }
+
+        .container {
+            display: block;
+            margin: 200px auto;
+            text-align: center;
+        }
+
+        .left {
+            width: 45vw;
+            height: 40vh;
+            color: black;
+            background-image: linear-gradient(115deg, #00F3FFFF 0%, #71C4FFFF 100%);
+            display: inline-block;
+            margin-right: -4px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            
+        }
+
+        .right {
+            width: 45vw;
+            height: 40vh;
+            color: black;
+            background-image: linear-gradient(294deg, #0B5F40FF 0%, #71C4FFFF 100%);
+            display: inline-block;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            opacity: 0.5;
+            
+    }
+
+        h2{
+            text-transform: uppercase;
+        }
+
+        h3{
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: black;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+
+        .cur-score {
+            width: 50%;
+            height: 30%;
+            background-image: radial-gradient(99% 99% at 109% 2%, #00C9FFFF 0%, #073AFF00 100%),radial-gradient(99% 99% at 21% 78%, #7B00FFFF 0%, #073AFF00 100%),radial-gradient(75% 75% at 50% 50%, #00FFFFFF 0%, #073AFFFF 100%);
+            border-radius: 5px;
+            display: inline-block;
+            
+        }
+
+        .middle {
+            position: absolute;
+            top: 28%;
+            left: 42%;
+            z-index:1;
+
+        }
+
+        button {
+            display: block;
+            height: 35px;
+            border-radius: 30%;
+            background: linear-gradient(90deg, #EAE4EEFF 100%, #71C4FFFF 100%);
+            text-align: center;
+            border-width: 0;
+        }
+        
+        .roll {
+            margin-top: 40%;
+            margin-left: 5px;
+        }
+
+        .hold {
+            margin-top: 10%;
+            margin-left: 15px;
+
+        }
+
+        .hide {
+            display:inline;
+            opacity: 0;
+        }
+        .dice {
+            margin-top: 40px;
+            width: 60px;
+            border-radius: 5px;
+            opacity: 0;
+
+            
+        }
+
+        .win {
+            width: 130%;
+            height: 20%;
+            margin-left: -50px;
+            margin-top: -50px;
+            font-weight: bold;
+            background: rgb(127, 231, 146);
+            border-radius: 5px;
+            padding: 5px;
+            display: none;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="left">
+            <h2>Player 1</h2>
+            <h1 class="total1">0</h1>
+            
+           
+            <article class="cur-score">
+                <h3>current</h3>
+                <h2 class="current1">0</h2>
+            </article>
+        </section>
+
+        <section class="middle">
+            <button class="new-game">🔃 New Game</button>
+            <img src="./images/dice1.jpg" alt="" class="dice">
+            <div class="win"></div>
+            <button class="roll">🎲 Roll Dice</button>
+            <button class="hold">🛑 Hold</button>
+        </section>
+
+        <section class="right">
+            <h2>Player 2</h2>
+            <h1 class="total2">0</h1>
+
+            
+            <article class="cur-score">
+                <h3>current</h3>
+                <h2 class="current2">0</h2>
+            </article>
+
+
+        </section>
+    </main>
+
+    <script>
+
+        const images = [
+            "./images/dice1.jpg",
+            "./images/dice2.jpg",
+            "./images/dice3.jpg",
+            "./images/dice4.jpg",
+            "./images/dice5.jpg",
+            "./images/dice6.jpg"
+        ]
+
+        let rand = 0
+        let totalScore1=0
+        let curScore1=0
+        let totalScore2=0
+        let curScore2=0
+        let player1 = true
+        let player2 = false
+
+        const dice = document.querySelector('.dice')
+        const roll = document.querySelector('.roll')
+        const hold = document.querySelector('.hold')
+        const newGame = document.querySelector('.new-game')
+        const total1 = document.querySelector('.total1')
+        const total2 = document.querySelector('.total2')
+        const current1 = document.querySelector('.current1')
+        const current2 = document.querySelector('.current2')
+        const left = document.querySelector('.left')
+        const right = document.querySelector('.right')
+        const win = document.querySelector('.win')
+
+        function reset(){
+            rand = 0
+                totalScore1=0
+                curScore1=0
+                totalScore2=0
+                curScore2=0
+                player1 = true
+                player2 = false
+                total1.textContent = 0
+                total2.textContent = 0
+                current1.textContent=0
+                current2.textContent=0
+                dice.style.opacity=0
+        }
+
+        function hideWin(){
+            win.style.display='none'
+            dice.style.display='inline'
+            dice.style.opacity=1
+        }
+
+        roll.addEventListener('click',()=>{
+            rand = Math.trunc(Math.random()*6+1)
+            dice.src = images[rand-1]
+            dice.style.opacity=1
+
+            if(player1){
+                if(rand !==1){
+                curScore1 +=rand
+                current1.textContent=curScore1
+
+                if(curScore1>=100 || totalScore1+curScore1 >=100){
+                    win.style.display='block'
+                    dice.style.display='none'
+                    win.textContent = 'Congratulation 🎉🎊 Player 1 Win!'
+
+                    setTimeout(reset,5000)
+                    setTimeout(hideWin,7000)
+
+                }
+                
+            }else{
+                totalScore1 += curScore1
+                total1.textContent = totalScore1
+                current1.textContent=0
+                curScore1=0
+                right.style.opacity=1
+                left.style.opacity=0.5
+                player1=false
+                player2=true
+                if(curScore1>=100 || totalScore1+curScore1 >=100){
+                    win.style.display='block'
+                    dice.style.display='none'
+                    win.textContent = 'Congratulation 🎉🎊 Player 1 Win!'
+                    setTimeout(reset,5000)
+                    setTimeout(hideWin,7000)
+                }
+
+            }
+            }else{
+                if(rand !==1){
+                                
+                    curScore2 +=rand
+                    current2.textContent=curScore2
+
+                    if(curScore2>=100 || totalScore2 +curScore2>=100){
+                    win.style.display='block'
+                    dice.style.display='none'
+                    win.textContent = 'Congratulation 🎉🎊 Player 2 Win!'
+                    setTimeout(reset,5000)
+                    setTimeout(hideWin,7000)
+
+                }
+                    } else{
+                    totalScore2 += curScore2
+                    total2.textContent = totalScore2
+                    current2.textContent=0
+                    curScore2=0
+                    right.style.opacity=0.5
+                    left.style.opacity=1
+                    player1=true
+                    player2=false
+                    if(curScore2>=100 || totalScore2+curScore2 >=100){
+                    win.style.display='block'
+                    dice.style.display='none'
+                    win.textContent = 'Congratulation 🎉🎊 Player 2 Win!'
+                    setTimeout(reset,5000)
+                    setTimeout(hideWin,7000)
+
+                }
+                    }
+                }
+
+        })
+
+        hold.addEventListener('click',()=>{
+            if(player1){
+                totalScore1 += curScore1
+                total1.textContent = totalScore1
+                current1.textContent=0
+                curScore1=0
+                right.style.opacity=1
+                left.style.opacity=0.5
+                player1=false
+                player2=true
+            }else{
+                totalScore2 += curScore2
+                    total2.textContent = totalScore2
+                    current2.textContent=0
+                    curScore2=0
+                    right.style.opacity=0.5
+                    left.style.opacity=1
+                    player1=true
+                    player2=false
+            }
+        })
+
+        newGame.addEventListener('click',()=>{
+                reset()
+
+        })
+
+        // if(totalScore1>=100){
+        //     alert('🎉🎊 Player1 win!!!')
+        // }else if(totalScore2>=100){
+        //     alert('🎉🎊 Player2 win!!!')
+        // }
+
+
+    </script>
+</body>
+</html>

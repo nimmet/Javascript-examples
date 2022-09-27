@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+        .heading {
+            margin: 0 auto;
+            background: rgb(3, 114, 248);
+            color: white;
+            padding: 10px 40px;
+            text-align: center;
+            text-transform:capitalize;
+            height: 10vh;
+        }
+
+        .calculation{
+            border: 2px solid gray;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-top: 30px;
+            width: 60vw;
+
+        }
+
+        .numbers{
+            border: 2px solid gray;
+            border-radius: 5px;
+            width: 40vw;
+            height: 8vh;
+            margin: 0 auto;
+            margin-top: 10px;
+
+        }
+
+        .btns{
+            width: 40vw;
+            height: 8vh;
+            margin: 10px auto 0 auto;
+            text-align: center;
+        }
+
+        button{
+            background: rgb(3, 114, 248);
+            width: 40px;
+            height: 30px;
+            color: white;
+            font-size: 1.3rem;
+            border: 2px solid gray;
+            border-radius: 5px;
+
+        }
+
+        .result {
+            
+            width: 40vw;
+            height: 8vh;
+            margin: 15px auto;
+            text-align: center;
+            padding: 15px 15px;
+            font-size: 1.3rem;
+            font-weight:bold;
+            
+        }
+
+        .show {
+            font-size: 1.3rem;
+            font-weight:bold;
+        }
+
+        .show-result {
+            border: 2px solid gray;
+            border-radius: 5px;
+            margin: 0 auto;
+            margin-top: 30px;
+            width: 60vw;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heading">
+            <h1>the unconventional calculator</h1>
+        </div>
+
+        <div class="calculation">
+            <div class="numbers"></div>
+            <div class="btns">
+                <button class="add">+</button>
+                <button class="sub">-</button>
+                <button class="multi">*</button>
+                <button class="divide">/</button>
+            </div>
+        </div>
+
+        <div class="show-result">
+            <div class="result">
+                Result: <span class="show">0</span>
+            </div>
+        </div>
+        
+    </div>
+  
+
+
+    
+</body>
+</html>

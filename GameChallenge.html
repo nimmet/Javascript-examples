@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background: black;
+            color: white;
+        }
+
+        .again {
+            display: inline-block;
+            width: 120px;
+            height: 70px;
+            background: white;
+            color:black;
+            font-size: 1.4rem;
+            font-weight: bold;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            padding: 10px 15px;
+            text-align: center;
+            margin: 10px 25px;
+            cursor: pointer;
+
+        }
+
+        p {
+            float:right;
+            margin-top: 30px;
+            margin-right: 30px;
+
+        }
+        .first {
+            margin-bottom: 20px;
+        }
+
+       
+
+        .title {
+            font-size: 2.5rem;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+
+        .showNum {
+            background: white;
+            color: black;
+            text-align: center;
+            width: 120px;
+            height: 90px;
+            font-size: 2.5rem;
+            margin: 0 auto;
+            margin-top: -50px;
+            
+           
+        }
+
+        .line {
+            width: 100vw;
+            height: 4px;
+            background: white;
+            margin-top: 120px;
+        }
+
+        .forth {
+            margin-top: 150px;
+            float: left;
+            text-align: center;
+            
+        }
+
+        .fifth {
+            margin-top: 150px;
+            float: right;
+            color: white;
+            
+            font-weight: bold;
+            font-size: 1.3rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-right: 20%;
+            margin-top: 160px;
+            
+        }
+      
+        #num {
+            color: white;
+            width: 150px;
+            height: 60px;
+            margin: 10px 50px;
+            border: 2px solid white;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            background: #000;
+
+        }
+
+        .info {
+            margin: 10px auto;
+        }
+
+        .score {
+            margin: 10px auto;
+        }
+
+        .hscore {
+            margin: 10px auto;
+        }
+
+        .btn {
+            width: 100px;
+            height: 50px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 20px 70px;
+            background: white;
+        }
+
+        .yexil {
+            background: green;
+            color: white;
+        }
+
+        .yexilR {
+            border:1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="first">
+            <button class="again">Again!</button>
+            <p>(Between 1 and 20)</p>
+        </div>
+
+        <div class="second">
+
+            <div class="title">Guess My Number!</div>
+            <div class="line"></div>
+            <div class="showNum">?</div>
+
+        </div>
+
+        <div class="third">
+            <div class="forth">
+                <input type="number" name="" id="num">
+                <button class="btn">Check!</button>
+            </div>
+
+            <div class="fifth">
+                <div class="info">Start guessing...</div>
+                <div class="score">💯 Score: <span class='scoree'>20</span></div>
+                <div class="hscore">🥇 Highscore: <span class='hscoree'>0</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    let scoreNum = 20
+    let highScore = 0
+    const check = document.querySelector('.btn')
+
+    let guestNumber = 0
+    const num = document.getElementById('num')
+   
+    const info = document.querySelector('.info')
+    const score = document.querySelector('.scoree')
+    const hscore = document.querySelector('.hscoree')
+    const showNum = document.querySelector('.showNum')
+    const again = document.querySelector('.again')
+    let genNumber= Math.trunc(Math.random()*20+1)
+
+
+    again.addEventListener('click',()=>{
+        genNumber = Math.trunc(Math.random()*20+1)
+        scoreNum=20
+        score.textContent = `${scoreNum}`
+        showNum.textContent = '?'
+        document.body.classList.remove('yexil')
+        again.classList.remove('yexil')
+        again.classList.remove('yexilR')
+                showNum.classList.remove('yexil')
+                showNum.classList.remove('yexilR')
+                num.classList.remove('yexil')
+                btn.classList.remove('yexil')
+                btn.classList.remove('yexilR')
+                info.classList.remove('yexil')
+                score.classList.remove('yexil')
+                hscore.classList.remove('yexil')
+       
+        
+    })
+
+    
+
+
+    check.addEventListener('click',()=>{
+        guestNumber = parseInt(num.value)
+        if(genNumber !== guestNumber){
+            if(guestNumber > genNumber){
+                info.textContent = `📈 Too High!`
+                scoreNum--;
+                score.textContent = `${scoreNum}`
+            } else if(guestNumber < genNumber){
+                info.textContent = `📉 Too Low!`
+                scoreNum--;
+                score.textContent = `${scoreNum}`
+        } 
+    }else{
+            info.textContent = '💐 You guest it!!!'
+                score.textContent = `${scoreNum}`
+                
+                if(scoreNum > highScore){
+                    highScore = scoreNum
+                    
+                } 
+
+                hscore.textContent = `${highScore}`
+                
+                showNum.textContent = genNumber
+                // document.body.style.backgroundColor='green'
+                // again.style.backgroundColor='green'
+                // again.style.color='white'
+                // again.style.border='2px solid white'
+                // showNum.style.backgroundColor='green'
+                // showNum.style.color='white'
+                // num.style.backgroundColor='green'
+                // btn.style.backgroundColor='green'
+        
+                // document.querySelector('.fifth').style.backgroundColor='green'
+
+                document.body.classList.add('yexil')
+        again.classList.add('yexil')
+        again.classList.add('yexilR')
+
+                showNum.classList.add('yexil')
+                showNum.classList.add('yexilR')
+                num.classList.add('yexil')
+                btn.classList.add('yexil')
+                btn.classList.add('yexilR')
+                // info.classList.add('yexil')
+                // score.classList.add('yexil')
+                // hscore.classList.add('yexil')
+               
+                
+        }
+})
+    
+    </script>
+</body>
+</html>

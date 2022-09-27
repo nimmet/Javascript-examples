@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        div {
+            margin: 50px;
+            text-align: center;
+            font-size: 40px;
+            font-family: cursive;
+        }
+
+        .shadow {
+           
+            text-shadow: 2px 2px 3px orchid;
+        }
+
+        .shadow0 {
+            text-shadow: 0 2px 0 teal;
+        }
+
+        .shadow1 {
+            text-shadow: 0 0 3px yellow;
+            
+        }
+
+        .shadow1:hover{
+            text-shadow: 0 0 3px red;
+            transition: all 4s ease-in;
+            
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: green;
+            margin: 20px;
+            box-shadow: 3px 3px 5px red;
+            transition: all 4s ease-in-out;
+        }
+        .box:hover{
+            box-shadow: 3px 5px 5px yellow;
+            border-radius: 10%;
+            transition: all 4s linear;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="shadow">Hello Camilla and Atilla!</div>
+    <div class="shadow0">Camilla and Atilla</div>
+    <div class="shadow1">Camilla and Atilla</div>
+    <div class="box"></div>
+</body>
+</html>

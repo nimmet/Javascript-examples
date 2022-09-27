@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <script>
+        const game = { 
+            team1: 'Bayern Munich', 
+            team2: 'Borrussia Dortmund',
+             players: [ [ 'Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies', 'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnarby', 'Lewandowski', ], [ 'Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi', 'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze', ], ],
+              score: '4:0',
+               scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+                date: 'Nov 9th, 2037', 
+                odds: { team1: 1.33, x: 3.25, team2: 6.5, },
+            };
+
+            const [player1,player2] = game.players
+            // console.log(player1);
+            // console.log(player2);
+            const [team1_gk,...team1_fieldPlayer] = player1
+            console.log(team1_gk);
+            console.log(team1_fieldPlayer);
+            game.team1_gk = team1_gk
+            game.team1_fieldPlayer=team1_fieldPlayer
+            console.log(game);
+
+            // create all player with  22 player
+
+            const allPlayer = [...player1,...player2]
+
+            console.log(allPlayer);
+
+            const player1Final = [...player1,'Thiago','Courinho','Perisic']
+            console.log(player1Final);
+            game.player1Final   = [...player1Final]
+            console.log(game);
+
+            const {  odds: {team1,x:draw,team2},} = game
+            console.log(team1,draw,team2);
+
+            function printGoals(...players){
+                for(let i=0; i<players.length; i++){
+                    console.log(`${players[i]} scored!!!`);
+                }
+
+                console.log(`There is totaly ${players.length}`);
+            }
+
+            printGoals(...game.scored)
+
+            const win1  = game.odds.team1<2?'team 1 win!!!':'team 2 win!!!'
+            console.log(win1);
+
+            function showScores(...score){
+                const scores= {}
+                for( s of score){
+                    scores[s] = 0
+                }
+                for( s of score){
+                    scores[s] = scores[s]+1
+                }
+                return scores
+            }
+
+            const scoreObject = showScores(...game.scored)
+            console.log(scoreObject);
+
+            function showGoals(...score){
+                for(const [index,name] of Object.entries(game.scored)){
+                console.log(`Goal ${Number(index)+1}: ${name}`)
+            }
+            }
+
+            showGoals(...game.scored)
+
+
+            let sum =0
+          for(const item of Object.values(game.odds)){
+            
+            sum += item
+            
+          }
+
+          console.log(`The average of odds is ${Math.trunc(sum/Object.values(game.odds).length)}`);
+
+
+    //    const [t1,d,t2] =  [...Object.entries(game.odds)]
+
+    //    console.log(`Odd of victory ${game.team1}: ${t1[1]}`);
+    //    console.log(`Odd of victory ${'Draw'}: ${d[1]}`);
+    //    console.log(`Odd of victory ${game.team2}: ${t2[1]}`);
+        //     console.log(`${index?.team1 && game.team1 || game.team2}`);
+        //   }
+
+        for(const[team,value] of Object.entries(game.odds)){
+            const teamStr = team ==='x'? 'draw': `victory ${game[team]}`
+
+            console.log(`Odd of ${teamStr}: ${value}`);
+        }
+
+
+        const gameEvents = new Map([ [17, '⚽ GOAL'], [36, '� Substitution'], [47, '⚽ GOAL'], [61, '� Substitution'], [64, '� Yellow card'], [69, '� Red card'], [70, '� Substitution'], [72, '� Substitution'], [76, '⚽ GOAL'], [80, '⚽ GOAL'], [92, '� Yellow card'],])
+
+        let events = []
+        const eventSet = new Set()
+        for (const [k,v] of [...gameEvents]){
+            console.log(`${k} ==> ${v}`);
+            eventSet.add(v)
+        }
+        events = [...eventSet]
+        console.log(events);
+        
+        gameEvents.delete(64)
+        for (const [k,v] of [...gameEvents]){
+            console.log(`${k} ==> ${v}`);
+        }
+
+        console.log(`An event happened, on average, every ${Math.floor(90/gameEvents.size)} minutes.`);
+
+        for (const [k,v] of [...gameEvents]){
+            if(Number(k)<45){
+                console.log(`[FIRST HALF] ${k}: ${v}`);
+
+            } else{
+                console.log(`[SECOND HALF] ${k}: ${v}`);
+
+            }
+            
+        }
+        
+    </script>
+</body>
+</html>
