@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+:root {
+    --bgColor1:#581f18;
+}
+        li {
+            list-style: none;
+        }
+
+        body {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background: white;
+        }
+
+        .container {
+            border: 5px solid red;
+            display: flex;
+            
+        }
+        li{
+            display: inline;
+        }
+        .container1{
+            display: flex;
+        }
+
+        .box {
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: #f3f3f3;
+        }
+
+        .box-1 {
+            background: var(--bgColor1);
+
+        }
+
+        .box-2 {
+            background: yellowgreen;
+            
+        }
+        .box-3 {
+            background: coral;
+            
+        }
+        .box-4 {
+            background: olivedrab;
+            
+        }
+        .box-5 {
+            background: cornflowerblue;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box-1">1</div>
+        <div class="box box-2">2</div>
+        <div class="box box-3">3</div>
+        <div class="box box-4">4</div>
+        <div class="box box-5">5</div>
+    </div>
+
+    <div class="container1">
+        <ul>
+            <li class="box box-1">ul li-1</li>
+            <li class="box box-2">ul li-2</li>
+            <li class="box box-3">ul li-3</li>
+            <li class="box box-4">ul li-4</li>
+            <li class="box box-5">ul li-5</li>
+        </ul>
+       
+    </div>
+   
+</body>
+</html>
