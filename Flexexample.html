@@ -23,13 +23,33 @@
         .container {
             border: 5px solid red;
             display: flex;
+            /* flex-direction:row-reverse; */
+            /* flex-direction: column; */
+            /* overflow-x: hidden; */
+            /* flex-wrap: wrap; */
+            /* justify-content:center; */
+            /* justify-content: space-evenly; */
+            height: 300px;
+            height: 40vh;
+            /* align-items: stretch; */
+            align-items: center;
+            justify-content: center;
             
         }
+
+        .generic {
+            background:navy;
+        }
         li{
-            display: inline;
+            display: inline-block;
+            width: 120px;
         }
         .container1{
+            margin: 20px;
             display: flex;
+            /* flex-direction: row; */
+            /* flex-wrap: wrap-reverse; */
+            /* justify-content:flex-end; */
         }
 
         .box {
@@ -41,7 +61,6 @@
 
         .box-1 {
             background: var(--bgColor1);
-
         }
 
         .box-2 {
@@ -69,6 +88,10 @@
         <div class="box box-3">3</div>
         <div class="box box-4">4</div>
         <div class="box box-5">5</div>
+        <!-- <div class="box generic">6</div>
+        <div class="box generic">7</div>
+        <div class="box generic">8</div>
+        <div class="box generic">9</div> -->
     </div>
 
     <div class="container1">
