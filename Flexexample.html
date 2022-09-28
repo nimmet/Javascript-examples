@@ -34,6 +34,7 @@
             /* align-items: stretch; */
             align-items: center;
             justify-content: center;
+            flex-wrap: wrap;
             
         }
 
@@ -47,6 +48,7 @@
         .container1{
             margin: 20px;
             display: flex;
+            /* flex-wrap: wrap; */
             /* flex-direction: row; */
             /* flex-wrap: wrap-reverse; */
             /* justify-content:flex-end; */
@@ -57,26 +59,35 @@
             text-align: center;
             font-size: 35px;
             color: #f3f3f3;
+            flex-grow: 1;
+            flex: 0 0 8%;
         }
 
         .box-1 {
             background: var(--bgColor1);
+            order: 1;
         }
 
         .box-2 {
             background: yellowgreen;
+            order:3;
             
         }
         .box-3 {
             background: coral;
-            
+            order: 5;
+            align-self: end;
         }
         .box-4 {
             background: olivedrab;
+            align-self: end;
             
         }
         .box-5 {
             background: cornflowerblue;
+            order:2;
+            align-self: stretch;
+            flex-grow: 5;
             
         }
     </style>
@@ -94,7 +105,9 @@
         <div class="box generic">9</div> -->
     </div>
 
-    <div class="container1">
+    <a href="banner.html">banner html</a>
+
+    <!-- <div class="container1">
         <ul>
             <li class="box box-1">ul li-1</li>
             <li class="box box-2">ul li-2</li>
@@ -103,7 +116,7 @@
             <li class="box box-5">ul li-5</li>
         </ul>
        
-    </div>
+    </div> -->
    
 </body>
 </html>

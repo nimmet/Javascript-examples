@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Example</title>
+
+    <style>
+        *{
+            margin: 0;
+        }
+
+        .hero{
+            min-height: 100vh;
+            background: url('./DOM/images/nature3.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner{
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),url('./DOM/images/nature2.jfif');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .title{
+            text-align: center;
+            text-shadow: 2px 2px 4px red;
+            text-transform: uppercase;
+            color: white;
+            transform: all 4s linear;
+            animation: move 1s  infinite;
+        }
+
+        .back {
+            position:fixed;
+            top:50px;
+            left: 50px;
+            font-size: 30px;
+            text-transform: uppercase;
+            text-shadow: 5px 5px 3px olive;
+            color: white;
+
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+
+        @keyframes move {
+            0%{
+                transform: translateX(0px);
+            }
+            25%{
+                transform: translateX(5px);
+            }
+
+            50%{
+                transform: translateX(10px);
+            }
+
+            75%{
+                transform: translateX(15px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1 class="title">Page Title</h1>
+    </header>
+    <div class="banner"></div>
+    <a href="Flexexample.html" class="back">back home</a>
+</body>
+</html>
