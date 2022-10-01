@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // class Car{
+        //     constructor(make,speed){
+        //         this.make = make
+        //         this.speed = speed
+        //     }
+
+        //     get speedUS() {
+        //         return this.speed / 1.6
+        //     }
+
+        //     set speedUS(speed){
+        //         this.speed = speed * 1.6
+        //     } 
+
+        //     accelerate(){
+        //         this.speed += 10
+        //         console.log(`${this.make} going at ${this.speed} km/h`);
+        //     }
+
+        //     brake(){
+        //         this.speed -= 5
+        //         console.log(`${this.make} going at ${this.speed} km/h`);
+        //     }
+
+        //     static info(){
+        //         console.log('Here you can find information about who made the car and the current speed of car');
+        //     }
+            
+        // }
+
+        const Person = function(name,birthYear){
+            this.name = name
+            this.birthYear = birthYear
+        }
+
+        Person.prototype.calAge = function(){
+            console.log(`Hei ${this.name}, You are ${2030-this.birthYear} years old.`);
+        }
+
+        const Student = function(name,birthYear,major){
+            Person.call(this,name,birthYear)
+            this.major = major
+        }
+
+        // linking prototypes
+        Student.prototype = Object.create(Person.prototype)
+        // Student.prototype = Person.prototype
+
+        Student.prototype.info = function(){
+            console.log(`My name is ${this.name} and study ${this.major}`);
+        }
+
+        // const car1 = new Car('Toyota',120)
+        // Car.info()
+        // car1.accelerate()
+        // console.log(`Mile: ${car1.speedUS}`);
+        // car1.brake()
+
+        const ahmet = new Person('Ahmet',1994)
+        ahmet.calAge()
+
+
+        const samet = new Student('Samet',2000,'Cyber Security')
+        samet.info()
+        samet.calAge()
+
+        console.log(samet.__proto__.__proto__);
+        Student.prototype.constructor = Student
+        console.log(Student.prototype.constructor);
+
+        const Car = function(make,speed){
+            this.make = make
+            this.speed = speed
+        }
+
+        Car.prototype.accelerate = function(){
+            this.speed += 10
+                console.log(`${this.make} going at ${this.speed} km/h`);
+        }
+
+        Car.prototype.brake = function(){
+                    this.speed -= 5
+                console.log(`${this.make} going at ${this.speed} km/h`);
+        }
+
+        const EV = function(make,speed,charge){
+            Car.call(this,make,speed)
+            this.charge = charge
+        }
+
+        EV.prototype = Object.create(Car.prototype)
+        EV.prototype.chargeBattery = function(chargeTo){
+            this.charge = chargeTo
+        }
+
+        EV.prototype.accelerate = function(){
+            this.speed += 20
+            this.charge--
+
+            console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`);
+        }
+
+        const vw = new EV('Tesla',120,23)
+        console.log(vw);
+        vw.accelerate()
+        vw.chargeBattery(90)
+        vw.accelerate()
+
+
+        class Account {
+            locale = navigator.language
+
+            #movements = []
+
+            constructor(owener,currency,pin){
+                this.owener = owener
+                this.currency = currency
+                this.pin = pin
+            }
+
+            deposit(val){
+                this.#movements.push(val)
+            }
+
+            getMovents(){
+                return this.#movements
+            }
+
+            windraw(val){
+                this.#movements.push(-val)
+            }
+        }
+
+        const acc1 = new Account('Memet','USD',1111)
+        console.log(acc1);
+        acc1.deposit(1200)
+        acc1.deposit(400)
+        acc1.windraw(200)
+        console.log(acc1.getMovents());
+        console.log(acc1.getMovents().reduce((acc,cur)=>acc+cur));
+
+
+
+    console.log('+'.repeat(50));
+
+    class CarCL {
+        constructor(make,speed){
+            this.make = make
+            this.speed = speed
+        }
+
+        accelerate(){
+            this.speed += 10
+            console.log(`${this.make} going at ${this.speed} km/h`);
+            return this
+        }
+
+        brake(){
+            this.speed -= 5
+            console.log(`${this.make} going at ${this.speed} km/h`);
+            return this
+        }
+
+        get speedUS(){
+            return this.speed / 1.6
+        }
+
+        set speedUS(speed){
+            this.speed = speed * 1.6
+        }
+    }
+
+    class EVCL extends CarCL {
+
+        #charge // private property
+
+        constructor(make,speed,charge){
+            super(make,speed)
+            this.#charge = charge
+        }
+
+        chargeBattery(val){
+            this.#charge = val
+            console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.#charge}%.`);
+            return this
+        }
+
+
+    }
+
+    const car3 = new EVCL('Rivian',120,23)
+    console.log(car3);
+    car3.chargeBattery(90).accelerate().accelerate().brake().brake().accelerate().accelerate()
+
+
+    </script>
+</body>
+</html>
