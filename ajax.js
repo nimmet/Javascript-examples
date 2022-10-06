@@ -21,3 +21,7 @@ function getData(){
         // console.log(xhr.responseText);
     })
 }
+
+const data = fetch('./person.json').then((req)=> req.json()).then((data)=> data.map((item)=> `<p>${item.name}</p>`))
+
+data.then((d)=> document.body.innerHTML=d.join(""));
