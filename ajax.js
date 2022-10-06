@@ -22,6 +22,6 @@ function getData(){
     })
 }
 
-const data = fetch('./person.json').then((req)=> req.json()).then((data)=> data.map((item)=> `<p>${item.name}</p>`))
+const data = fetch('./person.json').then((req)=> req.json()).then((data)=> data.map((item)=> `<p>${item.name.toUpperCase()}</p>`)).catch((err)=> console.log(err))
 
 data.then((d)=> document.body.innerHTML=d.join(""));
